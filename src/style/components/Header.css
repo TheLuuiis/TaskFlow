@@ -2,10 +2,12 @@
     width: 100%;
     height: auto;
     padding: 25px;
+}
+
+.nav__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid white;
 }
 
 .container__logo__header {
@@ -15,7 +17,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid white;
 }
 
 .container__logo__header span  {
@@ -42,4 +43,119 @@
     font-size: 17px;
     font-weight: 700;
     text-align: center;
+}
+
+.container__form__header {
+    width: auto;
+    height: auto;
+}
+
+.container__form__header form {
+    gap: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+}
+
+.input__header {
+    width: 780px;
+    height: auto;
+    position: relative;
+}
+
+.input__header input {
+    width: 100%;
+    height: auto;
+    outline: none;
+    color: var(--text__White);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    padding: 8px 35px;
+    border-radius: .5rem;
+    border: 1px solid #A9ABAF;
+    background-color: transparent;
+    transition: .3s ease-in-out;
+}
+
+.input__header:focus-within input {
+  border: 1px solid #0866FF;
+}
+
+.input__header:focus-within svg {
+  fill: #0866FF;
+  transition: .3s ease-in-out;
+}
+
+.input__header:focus-within input {
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
+
+.input__header svg {
+    position: absolute;
+    left: 10px;
+    top: 9px;
+}
+
+::placeholder {
+    color: var(--text__Gray);
+    font-weight: 500;
+}
+
+.container__form__header form button {
+    color: var(--text__White);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 8px 30px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: #0866FF;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+    font-family: var(--font__Family);
+}
+
+.container__form__header form button:hover {
+    color: #0866FF;
+    background-color: transparent;
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
+
+/* contact__header*/
+.container__contacts__header {
+    gap: 20px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container__contacts__header span {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    display: grid;
+    padding: 10px;
+    place-items: center;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+}
+
+.container__contacts__header span:hover {
+    background-color: rgba(169, 171, 175, 0.2);
+}
+
+.contact {
+    width: 24px;
+    height: 23px;
+    border: 1px solid white;
+    border-radius: 50%;
 }

@@ -1,0 +1,11 @@
+.container__home {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+.container__home h1 {
+  color: #f2f2f2;
+}

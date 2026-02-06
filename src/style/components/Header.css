@@ -2,6 +2,7 @@
     width: 100%;
     height: auto;
     padding: 25px;
+    flex: 0 0 auto;
 }
 
 .nav__header {
@@ -130,7 +131,7 @@
 
 /* contact__header*/
 .container__contacts__header {
-    gap: 20px;
+    gap: 15px;
     width: auto;
     height: auto;
     display: flex;

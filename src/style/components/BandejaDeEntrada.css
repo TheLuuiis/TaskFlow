@@ -1,0 +1,154 @@
+.container__bandeja {
+    width: 272px;
+    height: 100%;
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    border-radius: 17px;
+    border: 1px solid transparent;
+    background-color: #F2F5DE;;
+}
+
+.title__bandeja {
+    gap: 15px;
+    width: 248px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 25px;
+}
+
+.title__bandeja h2 {
+    color: var(--text__Black);
+    font-size: 23px;
+    font-weight: 600;
+    text-align: start;
+    line-height: 1.1;
+}
+
+.card__bandeja {
+    width: 100%;
+    height: auto;
+}
+
+.card__bandeja button {
+    cursor: pointer;
+    color: #96999E;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: start;
+    padding: 10px;transition: .3s ease-in-out;
+    border-radius: var(--border__Radius);
+    background-color: #242528;
+    border: 1px solid transparent;
+}
+
+.container__tareas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.title__tareas {
+    width: 100%;
+    height: auto;
+}
+
+.title__tareas h2 {
+    color: var(--text__Black);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px 0px 10px;
+}
+
+.title__tareas p {
+    color: var(--text__Black);
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.options__tareas {
+    width: 100%;
+    height: 220px;
+    bottom: 40px;
+    position: relative;
+}
+
+.option__tareas {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    position: absolute;
+}
+
+.blue {
+    width: 64px;
+    height: 64px;
+    left: 35px;
+    top: 30px;
+    border: 1px solid #1d7afc;
+}
+
+.chorme {
+    width: 64px;
+    height: 64px;
+    left: 147px;
+    top: 32px;
+    border: 1px solid #7F5F01;
+}
+
+.yellow {
+    width: 48px;
+    height: 48px;
+    left: 100px;
+    top: 95px;
+    border: 1px solid #EED12B;
+}
+
+.green {
+    width: 48px;
+    height: 48px;
+    left: 30px;
+    top: 130px;
+    border: 1px solid #2ABB7F;
+}
+
+.white {
+    width: 48px;
+    height: 48px;
+    left: 160px;
+    top: 138px;
+    border: 1px solid #1F1F21;
+}
+
+.option__tareas svg,
+.option__tareas img {
+    width: 30px;
+    height: 30px;
+}
+
+.me__bandeja {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+}
+
+.me__bandeja p {
+    color: var(--text__Black);
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+}

@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 17px;
+    position: relative;
 }
 
 .header__taks {
@@ -54,4 +55,25 @@
     height: 16px;
     border-radius: 50%;
     border: 1px solid white;
+}
+
+/* Container - Taks */
+.taks {
+    width: 100%;
+    height: 100%;
+
+}
+
+.taks ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.taks ul li {
+    width: 272px;
+    height: 100%;
+    border: 1px solid red;
+    list-style: none;
+    overflow: hidden;
 }

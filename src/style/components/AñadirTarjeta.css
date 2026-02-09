@@ -1,0 +1,39 @@
+.container__añadir__tarjeta {
+    gap: 13px;
+    width: auto;
+    height: auto;
+    display: flex;
+    bottom: -20px;
+    left: 34.5%;
+    position: absolute;
+    padding: 6px;
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 0 5px rgba(255, 255, 255, 0.35);
+    background-color: #18191A;
+    border-radius: .5rem;
+}
+
+.container__añadir__tarjeta button {
+    cursor: pointer;
+    gap: 10px;
+    color: #CECFD2;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    background-color: #1C2B42;
+    background-color: transparent;
+    white-space: middle;
+    transition: .2s ease-in-out;
+}
+
+.container__añadir__tarjeta button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

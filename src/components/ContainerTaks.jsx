@@ -1,4 +1,5 @@
 import '../style/components/ContainerTask.css';
+import AñadirTarjeta from './AñadirTarjeta';
 
 const ContainerTask = () => {
     return (  
@@ -17,8 +18,16 @@ const ContainerTask = () => {
                 </div>
             </header>
             <div className="taks">
-                
+                <ul>
+                    <li>
+                        
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
+            <AñadirTarjeta />
         </div>
     );
 }

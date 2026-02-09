@@ -1,7 +1,7 @@
 .header {
     width: 100%;
     height: auto;
-    padding: 25px;
+    padding: 15px;
     flex: 0 0 auto;
 }
 
@@ -111,7 +111,7 @@
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    padding: 8px 30px;
+    padding: 5px 30px;
     cursor: pointer;
     border: 1px solid transparent;
     background-color: #0866FF;
@@ -123,15 +123,15 @@
 .container__form__header form button:hover {
     color: #0866FF;
     background-color: transparent;
-  border-color: rgba(8, 102, 255, 0.9);
-  box-shadow:
-    0 0 0 3px rgba(8, 102, 255, 0.25),
-    0 0 12px rgba(8, 102, 255, 0.35);
+    border-color: rgba(8, 102, 255, 0.9);
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 255, 0.25),
+        0 0 12px rgba(8, 102, 255, 0.35);
 }
 
 /* contact__header*/
 .container__contacts__header {
-    gap: 15px;
+    gap: 7px;
     width: auto;
     height: auto;
     display: flex;

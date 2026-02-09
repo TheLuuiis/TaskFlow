@@ -8,6 +8,7 @@ html, body, #root {
 }
 
 :root {
+    --text: #242528;
     --text__Black: #1F1F21;
     --text__White: #f2f2f2;
     --text__Gray: #A9ABAF;

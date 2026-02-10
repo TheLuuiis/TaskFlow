@@ -30,17 +30,17 @@ const ModalFormularioTarjeta = () => {
                                 </div>
                                 <div className="inputs">
                                     <textarea name="description" placeholder='Introduce una descripción'></textarea>
-                                </div>
-                                <div className="states">
-                                    <span>Etiqueta</span>
-                                      <select id="status" name="status">
-                                        <option value="pending">🕒 Pendiente</option>
-                                        <option value="progress">En proceso</option>
-                                        <option value="done">Finalizado</option>
-                                    </select>
-                                </div>
-                                <button type="submit">Crear tarea</button>
+                                </div>                
                             </div>
+                            <div className="states">
+                                <a href="#">Etiqueta (en desarrollo)</a>
+                                <select name="status">
+                                    <option value="pending">Pendiente</option>
+                                    <option value="progress">En proceso</option>
+                                    <option value="done">Finalizado</option>
+                                </select>
+                            </div>
+                            <button type="submit">Crear tarea</button>
                         </form>
                     </div>
                     <div className="container__description__form">

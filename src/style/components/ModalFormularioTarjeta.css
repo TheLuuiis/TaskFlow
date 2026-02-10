@@ -68,10 +68,167 @@
     width: 100%;
     max-width: 50%;
     height: auto;
-    padding: 50px 20px 20px 20px;
-    border: 1px solid black;
+    padding: 57px 20px 20px 20px;
 }
 
+/* Container Title */
+.container__form form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title__form {
+    width: 100%;
+    height: auto;
+    margin: 0px 0px 30px;
+}
+
+.title__form h1 {
+    color: #0866FF;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: start;
+    line-height: 1.09;
+    margin: 0px 0px 10px;
+}
+
+.title__form p {
+    color: #242528;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+}
+
+.container__inputs {
+    gap: 30px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 30px;
+}
+
+.inputs {
+    width: 100%;
+    height: auto;
+}
+
+.inputs input {
+    width: 100%;
+    height: auto;
+    color: #242528;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+}
+
+.inputs textarea {
+    width: 100%;
+    height: 150px;
+    color: #242528;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    outline: none;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+    font-family: var(--font__Family);
+}
+
+.inputs input:focus,
+.inputs textarea:focus {
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
+
+::placeholder {
+    color: #96999E;
+    font-weight: 400;
+}
+
+.states{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0px 30px;
+}
+
+.states a {
+    cursor: pointer;
+    color: #242528;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: start;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+}
+
+.states a:hover {
+    color: #0866FF;
+}
+
+.states select {
+    padding: 8px 26px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-White);
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: .5rem;
+    background-color: transparent;
+    transition: .3s ease-in-out;
+    font-family: var(--font__Family);
+}
+
+.states select option {
+    color: #242528;
+    background-color: transparent;
+    font-family: var(--font__Family);
+}
+
+.states select:focus {
+    border-color: rgba(8, 102, 255, 0.9);
+    box-shadow:
+        0 0 0 3px rgba(8, 102, 255, 0.25),
+        0 0 122px rgba(8, 102, 255, 0.35);
+}
+
+.container__form form button {
+    width: 100%;
+    color: var(--text__White);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    white-space: middle;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    background-color: #0866FF;
+    transition: .3s ease-in-out;
+}
+
+.container__form form button:hover {
+    color: #0866FF;
+    background-color: transparent;
+    border: 1px solid #0866FF;
+}
+
+/* Container - Description - Modal */
 .container__description__form {
     width: 100%;
     max-width: 50%;
@@ -107,6 +264,7 @@
     font-size: 32px;
     font-weight: 600;
     text-align: start;
+    line-height: 1.09;
     margin: 0px 0px 10px;
 }
 

@@ -1,0 +1,112 @@
+.card__task {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    border: 1px solid transparent;
+    transition: .3s ease-in-out;
+    border-radius: 0.6rem;
+    padding: 15px 10px;
+    overflow: hidden;
+    justify-content: space-between;
+    background-color: var(--background__Black);
+}
+
+.title__card {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.title__card span {
+    color: #CECFD2;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: start;
+}
+
+.container__task__card {
+    gap: 13px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 10px 10px 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2a2a2e;
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+}
+
+.container__task__card:hover {
+    border: 1.5px solid #CECFD2;
+}
+
+.content__task__card {
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.content__task__card a {
+    color: var(--text__Gray);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-align: start;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+}
+
+.description__task__card {
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.description__task__card p {
+    color: var(--text__Gray);
+    font-size: 14.5px;
+    font-weight: 500;
+    text-align: start;
+    text-decoration: none;
+    transition: .3s ease-in-out;
+}
+
+.container__edit__card {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.edit__card {
+    gap: 3.5px;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit__card p {
+    color: var(--text__Gray);
+    font-size: 14.5px;
+}
+
+.edit__card:hover svg,
+.edit__card:hover p {
+    color: #CECFD2;
+    fill: #CECFD2;
+}

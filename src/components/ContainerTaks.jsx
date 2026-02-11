@@ -1,5 +1,6 @@
 import '../style/components/ContainerTask.css';
 import AñadirTarjeta from './AñadirTarjeta';
+import Task from './Task';
 
 const ContainerTask = () => {
     return (  
@@ -20,7 +21,7 @@ const ContainerTask = () => {
             <div className="taks">
                 <ul>
                     <li>
-                        
+                        <Task />
                     </li>
                     <li></li>
                     <li></li>

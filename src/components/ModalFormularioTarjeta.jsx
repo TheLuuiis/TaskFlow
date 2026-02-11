@@ -33,7 +33,7 @@ const ModalFormularioTarjeta = () => {
                                 </div>                
                             </div>
                             <div className="states">
-                                <a href="#">Etiqueta (en desarrollo)</a>
+                                <a href="#">Etiqueta (en desarrollo )</a>
                                 <select name="status">
                                     <option value="pending">Pendiente</option>
                                     <option value="progress">En proceso</option>

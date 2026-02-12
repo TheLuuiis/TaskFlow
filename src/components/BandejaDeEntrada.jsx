@@ -1,5 +1,6 @@
 import '../style/components/BandejaDeEntrada.css';
 import chorme from '../assets/image/chorme.svg';
+
 const BandejaDeEntrada = () => {
     return (  
         <div className="container__bandeja">

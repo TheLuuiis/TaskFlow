@@ -4,19 +4,21 @@
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);  
-  display: flex;
+  display: none;
+  align-items: flex-start;
   align-items: top;
   justify-content: center;
 }
 
 .container__modal__form__edit {
     width: 1080px;
-    height: 388.94px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     background: #fcfcfd;
     position: absolute;
+    overflow: hidden;
     top: 70px;
     box-shadow:
         0 1px 2px rgba(0, 0, 0, 0.05);
@@ -30,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #ccc;
     justify-content: space-between;
 }
 
@@ -84,18 +86,23 @@
 /* Container - Main - Edit */
 .main__edit {
     width: 100%;
-    height: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .container__info__edit {
-    width: 100%;
+    flex: 0 0 55%;
     max-width: 55%;
-    height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     padding: 24px 20px 16px;
+}
+
+.container__info__edit form {
+    width: 100%;
+    height: 100%;
 }
 
 .title__edit {
@@ -105,30 +112,62 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.title__edit a {
+/* Edición del formulario */
+.edit__input {
+    width: 100%;
+}
+
+.edit__input a {
     color: #242528;
     font-size: 28px;
     font-weight: 600;
     text-align: start;
+    display: flex;
     text-decoration: none;
 }
 
+.edit__input input {
+    width: 100%;
+    height: auto;
+    color: #242528;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    display: none;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+
+}
+
+.edit__input input:focus {
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
+
+::placeholder {
+    color: #96999E;
+    font-weight: 400;
+}
+
 .container__description-edit {
-    widows: 100%;
+    width: 100%;
     height: auto;
     padding: 25px 0px 16px 20px;
-    border: 1px solid black;
 }
 
 .container__labels__edit {
     width: auto;
     height: auto;
     display: flex;
+    margin: 0px 0px 30px;
     justify-content: space-between;
-    border: 1px solid black;
 }
 
 .labels__edit {
@@ -139,11 +178,12 @@
     transition: .3s ease-in-out;
     border: 1px solid transparent;
     border-radius: .2rem;
-    background-color: #242528;
+    background-color: transparent;
+    border: 1px solid #0866FF;
 }
 
 .labels__edit p {
-    color: #fcfcfd;
+    color: #0866FF;
     font-size: 14px;
     font-family: 500;
     text-align: center;
@@ -152,48 +192,172 @@
 .description__edit {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
+.title__description {
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0px 0px 15px;
+}
 
+.title__description p {
+    color: #242528;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: start;
+}
 
+.content__edit p {
+    color: #242528;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: start;
+    display: none;
+}
 
+.content__edit textarea {
+    width: 100%;
+    height: 125px;
+    color: #242528;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    text-align: start;
+    outline: none;
+    resize: none;
+    overflow-y: scroll;
+    margin: 0px 0px 40px;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+    font-family: var(--font__Family);
+}
 
+.content__edit textarea:focus {
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
 
+.container__description-edit button {
+    width: 100%;
+    color: var(--text__White);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    white-space: middle;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    background-color: #0866FF;
+    transition: .3s ease-in-out;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.container__description-edit button:hover {
+    color: #0866FF;
+    background-color: transparent;
+    border: 1px solid #0866FF;
+}
 
 .container__comments {
-    width: 100%;
+    flex: 0 0 45%;
     max-width: 45%;
-    height: 100%;
-    background-color: red;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;      
+    height: 100%;        
+    overflow: hidden;
+    padding: 24px 20px 16px;
+}
+
+.container__title__comments {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0px 20px;
+}
+
+.title__comment {
+    gap: 10px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title__comment p {
+    color: #242528;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: start;
+}
+
+.container__title__comments button {
+    color: #fcfcfd;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 15px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    border-radius: .5rem;
+    background-color: #0866FF;
+}
+
+.container__title__comments button:hover {
+    background-color: #3b75d1;
+}
+
+.input__comment {
+    width: 100%;
+    height: auto;
+}
+
+.input__comment input {
+    width: 100%;
+    color: #242528;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    transition: .3s ease-in-out;
+}
+
+.input__comment input:focus {
+  border-color: rgba(8, 102, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(8, 102, 255, 0.25),
+    0 0 12px rgba(8, 102, 255, 0.35);
+}
+
+.container__title__comments,
+.input__comment {
+  flex: 0 0 auto;
+}
+
+/* Container de comentarios - Usuario */
+.container__comments__user {
+    width: 100%;
+    flex: 1 1 auto;      
+    min-height: 0;      
+    overflow-y: auto;    
+    overflow-x: hidden;
+    padding: 15px 0px;
+    border: 1px solid black;
 }

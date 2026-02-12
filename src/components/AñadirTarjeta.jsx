@@ -1,6 +1,9 @@
 import '../style/components/AñadirTarjeta.css';
 
 const AñadirTarjeta = () => {
+
+    
+
     return (  
         <div className="container__añadir__tarjeta">
             <button>

@@ -6,6 +6,7 @@ import ModalFormularioTarjeta from '../components/ModalFormularioTarjeta';
 import EditarFormulario from '../components/EditarFormulario';
 
 const STORAGE_KEY = 'taskflow_tasks';
+const DELETE_CARD_ANIMATION_MS = 900;
 
 const Home = ({ searchQuery = '' }) => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -20,6 +21,7 @@ const Home = ({ searchQuery = '' }) => {
 
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(null);
+    const [deletingTaskId, setDeletingTaskId] = useState(null);
 
     useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
@@ -72,7 +74,13 @@ const Home = ({ searchQuery = '' }) => {
     };
 
     const handleDeleteTask = (taskId) => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+        setDeletingTaskId(taskId);
+
+        window.setTimeout(() => {
+            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+            setDeletingTaskId((prev) => (prev === taskId ? null : prev));
+            setTaskToEdit((prev) => (prev && prev.id === taskId ? null : prev));
+        }, DELETE_CARD_ANIMATION_MS);
     };
 
     return (
@@ -86,6 +94,7 @@ const Home = ({ searchQuery = '' }) => {
                 onEditTask={handleOpenEditTask}
                 onMoveTask={handleMoveTask}
                 searchQuery={searchQuery}
+                deletingTaskId={deletingTaskId}
             />
             {modalOpen && (
                 <ModalFormularioTarjeta

@@ -35,13 +35,16 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete, onTaskPatch }) => {
         return () => window.cancelAnimationFrame(frame);
     }, []);
 
-    const requestClose = () => {
+    const requestClose = (afterClose) => {
         if (isClosingRef.current) return;
         isClosingRef.current = true;
         setModalState('is-closing');
 
         window.setTimeout(() => {
             onClose();
+            if (typeof afterClose === 'function') {
+                afterClose();
+            }
         }, CLOSE_ANIMATION_MS);
     };
 
@@ -106,9 +109,7 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete, onTaskPatch }) => {
 
     const handleDelete = () => {
         if (typeof onDelete !== 'function' || !formData.id) return;
-        onDelete(formData.id);
-
-        requestClose();
+        requestClose(() => onDelete(formData.id));
     };
 
     const persistComments = (nextComments) => {

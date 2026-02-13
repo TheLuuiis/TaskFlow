@@ -10,7 +10,7 @@ const normalizarTexto = (texto = '') =>
         .replace(/[\u0300-\u036f]/g, '')
         .trim();
 
-const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask, searchQuery }) => {
+const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask, searchQuery, deletingTaskId }) => {
     const [draggedTaskId, setDraggedTaskId] = useState(null);
     const [dropStatus, setDropStatus] = useState(null);
 
@@ -95,6 +95,7 @@ const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask, searchQuery
                                 onDragEnd={handleDragEnd}
                                 isDragging={draggedTaskId === task.id}
                                 isFilteredOut={!coincideConFiltro(task)}
+                                isDeleting={deletingTaskId === task.id}
                             />
                         ))}
                     </li>
@@ -114,6 +115,7 @@ const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask, searchQuery
                                 onDragEnd={handleDragEnd}
                                 isDragging={draggedTaskId === task.id}
                                 isFilteredOut={!coincideConFiltro(task)}
+                                isDeleting={deletingTaskId === task.id}
                             />
                         ))}
                     </li>
@@ -133,6 +135,7 @@ const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask, searchQuery
                                 onDragEnd={handleDragEnd}
                                 isDragging={draggedTaskId === task.id}
                                 isFilteredOut={!coincideConFiltro(task)}
+                                isDeleting={deletingTaskId === task.id}
                             />
                         ))}
                     </li>

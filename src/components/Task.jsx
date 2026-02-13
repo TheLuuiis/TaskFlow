@@ -6,13 +6,13 @@ const statusLabel = {
     done: 'Finalizado'
 };
 
-const Task = ({ task, onEditTask, onDragStart, onDragEnd, isDragging, isFilteredOut }) => {
+const Task = ({ task, onEditTask, onDragStart, onDragEnd, isDragging, isFilteredOut, isDeleting }) => {
     const { title, status } = task;
 
     return (
         <div
-            className={`card__task ${isDragging ? 'is-dragging' : ''} ${isFilteredOut ? 'filtered-out' : ''}`}
-            draggable={!isFilteredOut}
+            className={`card__task ${isDragging ? 'is-dragging' : ''} ${isFilteredOut ? 'filtered-out' : ''} ${isDeleting ? 'is-deleting' : ''}`}
+            draggable={!isFilteredOut && !isDeleting}
             onDragStart={(event) => onDragStart && onDragStart(event, task.id)}
             onDragEnd={onDragEnd}
         >
@@ -35,11 +35,13 @@ const Task = ({ task, onEditTask, onDragStart, onDragEnd, isDragging, isFiltered
             <div className="container__edit__card">
                 <div
                     className="edit__card"
-                    onClick={() => onEditTask(task)}
+                    onClick={() => {
+                        if (!isDeleting) onEditTask(task);
+                    }}
                     role="button"
                     tabIndex={0}
                     onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
+                        if ((event.key === 'Enter' || event.key === ' ') && !isDeleting) {
                             onEditTask(task);
                         }
                     }}

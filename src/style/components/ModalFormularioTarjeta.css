@@ -71,7 +71,7 @@
     width: 100%;
     max-width: 50%;
     height: auto;
-    padding: 57px 20px 20px 20px;
+    padding: 47px 20px 20px 20px;
 }
 
 /* Container Title */
@@ -116,6 +116,8 @@
 .inputs {
     width: 100%;
     height: auto;
+    position: relative;
+    padding-bottom: 18px;
 }
 
 .inputs input {
@@ -178,6 +180,23 @@
     text-align: start;
     text-decoration: none;
     transition: .3s ease-in-out;
+}
+
+/* Mensaje de error */
+.field__error {
+    position: absolute;
+    left: 2px;
+    bottom: 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    color: #d92d20;
+    pointer-events: none;
+}
+
+.input__error {
+    border-color: #d92d20 !important;
+    box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.15) !important;
 }
 
 .states a:hover {

@@ -107,21 +107,23 @@ const ModalFormularioTarjeta = ({ onClose, onCreateTask }) => {
                                 <div className="inputs">
                                     <input
                                         type="text"
-                                        name='tarea'
+                                        name="tarea"
                                         value={formData.tarea}
                                         onChange={handleChange}
-                                        placeholder='Introduce un título o pega un enlace'
+                                        placeholder="Introduce un título o pega un enlace"
+                                        className={errors.tarea ? 'input__error' : ''}
                                     />
-                                    {errors.tarea && <small>{errors.tarea}</small>}
+                                    {errors.tarea && <small className="field__error">{errors.tarea}</small>}
                                 </div>
                                 <div className="inputs">
                                     <textarea
                                         name="description"
                                         value={formData.description}
                                         onChange={handleChange}
-                                        placeholder='Introduce una descripción'
+                                        placeholder="Introduce una descripción"
+                                        className={errors.description ? 'input__error' : ''}
                                     ></textarea>
-                                    {errors.description && <small>{errors.description}</small>}
+                                    {errors.description && <small className="field__error">{errors.description}</small>}
                                 </div>                
                             </div>
                             <div className="states">

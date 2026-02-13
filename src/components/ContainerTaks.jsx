@@ -1,11 +1,44 @@
+import { useState } from 'react';
 import '../style/components/ContainerTask.css';
 import AñadirTarjeta from './AñadirTarjeta';
 import Task from './Task';
 
-const ContainerTask = ({ onOpenModal, tasks, onEditTask }) => {
+const ContainerTask = ({ onOpenModal, tasks, onEditTask, onMoveTask }) => {
+    const [draggedTaskId, setDraggedTaskId] = useState(null);
+    const [dropStatus, setDropStatus] = useState(null);
+
     const tareasPendientes = tasks.filter((task) => task.status === 'pending');
     const tareasEnProceso = tasks.filter((task) => task.status === 'progress');
     const tareasFinalizadas = tasks.filter((task) => task.status === 'done');
+
+    const handleDragStart = (event, taskId) => {
+        setDraggedTaskId(taskId);
+        event.dataTransfer.effectAllowed = 'move';
+        event.dataTransfer.setData('text/plain', String(taskId));
+    };
+
+    const handleDragEnd = () => {
+        setDraggedTaskId(null);
+        setDropStatus(null);
+    };
+
+    const handleDragOver = (event, status) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+        if (dropStatus !== status) setDropStatus(status);
+    };
+
+    const handleDrop = (event, status) => {
+        event.preventDefault();
+        const idFromTransfer = Number(event.dataTransfer.getData('text/plain'));
+        const taskId = Number.isNaN(idFromTransfer) ? draggedTaskId : idFromTransfer;
+
+        if (!taskId) return;
+
+        onMoveTask(taskId, status);
+        setDraggedTaskId(null);
+        setDropStatus(null);
+    };
 
     return (
         <div className="container__taks">
@@ -15,31 +48,63 @@ const ContainerTask = ({ onOpenModal, tasks, onEditTask }) => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="#fff" viewBox="0 0 24 24"><path d="M12 2a2 2 0 1 0 0 4 2 2 0 1 0 0-4m-2 16h4v-5h2V9c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v4h2z"></path><path d="M16 14.3v2.03c2.63.47 4 1.3 4 1.66 0 .51-2.75 2-8 2s-8-1.49-8-2c0-.36 1.37-1.2 4-1.66V14.3c-3.31.52-6 1.72-6 3.7 0 2.75 5.18 4 10 4s10-1.25 10-4c0-1.98-2.69-3.18-6-3.7"></path></svg>
                 </div>
                 <div className="acount__taks">
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
-                    <div className="circle"></div>
+                    <div className="circle"></div><div className="circle"></div><div className="circle"></div><div className="circle"></div><div className="circle"></div>
                 </div>
             </header>
 
             <div className="taks">
                 <ul>
-                    <li className='pendiente'>
+                    <li
+                        className={`pendiente dropzone ${dropStatus === 'pending' ? 'dropzone--active' : ''}`}
+                        onDragOver={(event) => handleDragOver(event, 'pending')}
+                        onDrop={(event) => handleDrop(event, 'pending')}
+                        onDragLeave={() => setDropStatus(null)}
+                    >
                         {tareasPendientes.map((task) => (
-                            <Task key={task.id} task={task} onEditTask={onEditTask} />
+                            <Task
+                                key={task.id}
+                                task={task}
+                                onEditTask={onEditTask}
+                                onDragStart={handleDragStart}
+                                onDragEnd={handleDragEnd}
+                                isDragging={draggedTaskId === task.id}
+                            />
                         ))}
                     </li>
 
-                    <li className='enProceso'>
+                    <li
+                        className={`enProceso dropzone ${dropStatus === 'progress' ? 'dropzone--active' : ''}`}
+                        onDragOver={(event) => handleDragOver(event, 'progress')}
+                        onDrop={(event) => handleDrop(event, 'progress')}
+                        onDragLeave={() => setDropStatus(null)}
+                    >
                         {tareasEnProceso.map((task) => (
-                            <Task key={task.id} task={task} onEditTask={onEditTask} />
+                            <Task
+                                key={task.id}
+                                task={task}
+                                onEditTask={onEditTask}
+                                onDragStart={handleDragStart}
+                                onDragEnd={handleDragEnd}
+                                isDragging={draggedTaskId === task.id}
+                            />
                         ))}
                     </li>
 
-                    <li className='finalizado'>
+                    <li
+                        className={`finalizado dropzone ${dropStatus === 'done' ? 'dropzone--active' : ''}`}
+                        onDragOver={(event) => handleDragOver(event, 'done')}
+                        onDrop={(event) => handleDrop(event, 'done')}
+                        onDragLeave={() => setDropStatus(null)}
+                    >
                         {tareasFinalizadas.map((task) => (
-                            <Task key={task.id} task={task} onEditTask={onEditTask} />
+                            <Task
+                                key={task.id}
+                                task={task}
+                                onEditTask={onEditTask}
+                                onDragStart={handleDragStart}
+                                onDragEnd={handleDragEnd}
+                                isDragging={draggedTaskId === task.id}
+                            />
                         ))}
                     </li>
                 </ul>

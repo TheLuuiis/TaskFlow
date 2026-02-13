@@ -18,6 +18,19 @@ const Home = () => {
         }
     });
 
+    /* Arrastrar tarea */
+    const handleMoveTask = (taskId, newStatus) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === taskId ? { ...task, status: newStatus } : task
+            )
+        );
+
+        setTaskToEdit((prev) =>
+            prev && prev.id === taskId ? { ...prev, status: newStatus } : prev
+        );
+    };
+
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(null);
 
@@ -56,6 +69,7 @@ const Home = () => {
                 onOpenModal={() => setModalOpen(true)}
                 tasks={tasks}
                 onEditTask={handleOpenEditTask}
+                onMoveTask={handleMoveTask}
             />
             {modalOpen && (
                 <ModalFormularioTarjeta

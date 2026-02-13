@@ -1,6 +1,22 @@
 import '../style/components/TarjetaComentarios.css';
 
-const TarjetaComentarios = () => {
+const TarjetaComentarios = ({
+    comment,
+    isEditing,
+    editValue,
+    onEditChange,
+    onStartEdit,
+    onCancelEdit,
+    onSaveEdit,
+    onDelete
+}) => {
+    const handleEditKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            onSaveEdit(comment.id);
+        }
+    };
+
     return (  
         <div className="card__comments">
             <div className="user__comment">
@@ -9,11 +25,31 @@ const TarjetaComentarios = () => {
             <div className="description__user">
                 <span>Luis David</span>
                 <div className="comment">
-                    <p>Crea tu nueva tarea hoy mismo y avanza ya firme ya</p>
+                    {isEditing ? (
+                        <input
+                            type="text"
+                            value={editValue}
+                            onChange={onEditChange}
+                            onKeyDown={handleEditKeyDown}
+                            maxLength={50}
+                            autoFocus
+                        />
+                    ) : (
+                        <p>{comment.text}</p>
+                    )}
                 </div>
                 <div className="comment_edit">
-                    <button className='btn__comment_blue'>Editar</button>
-                    <button className='btn__comment__red'>Eliminar</button>
+                    {isEditing ? (
+                        <>
+                            <button type="button" className='btn__comment_blue' onClick={() => onSaveEdit(comment.id)}>Guardar</button>
+                            <button type="button" className='btn__comment__red' onClick={onCancelEdit}>Cancelar</button>
+                        </>
+                    ) : (
+                        <>
+                            <button type="button" className='btn__comment_blue' onClick={() => onStartEdit(comment)}>Editar</button>
+                            <button type="button" className='btn__comment__red' onClick={() => onDelete(comment.id)}>Eliminar</button>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

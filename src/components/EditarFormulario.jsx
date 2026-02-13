@@ -4,7 +4,7 @@ import TarjetaComentarios from './TarjetaComentarios';
 
 const estadosValidos = ['pending', 'progress', 'done'];
 
-const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
+const EditarFormulario = ({ task, onClose, onSave, onDelete, onTaskPatch }) => {
     const [formData, setFormData] = useState({
         id: '',
         title: '',
@@ -18,6 +18,12 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
         status: ''
     });
 
+    const [commentInput, setCommentInput] = useState('');
+    const [commentError, setCommentError] = useState('');
+    const [comments, setComments] = useState([]);
+    const [editingCommentId, setEditingCommentId] = useState(null);
+    const [editingValue, setEditingValue] = useState('');
+
     useEffect(() => {
         if (!task || typeof task !== 'object') return;
 
@@ -28,6 +34,12 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
                 description: task?.description ?? '',
                 status: estadosValidos.includes(task?.status) ? task.status : 'pending'
             });
+
+            setComments(Array.isArray(task?.comments) ? task.comments : []);
+            setCommentInput('');
+            setCommentError('');
+            setEditingCommentId(null);
+            setEditingValue('');
         };
 
         updateFormData();
@@ -64,13 +76,94 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
             id: formData.id,
             title: formData.title.trim(),
             description: formData.description.trim(),
-            status: formData.status
+            status: formData.status,
+            comments
         });
     };
 
     const handleDelete = () => {
         if (typeof onDelete !== 'function' || !formData.id) return;
         onDelete(formData.id);
+    };
+
+    const persistComments = (nextComments) => {
+        if (typeof onTaskPatch === 'function' && formData.id) {
+            onTaskPatch(formData.id, { comments: nextComments });
+        }
+    };
+
+    const handleCommentInputChange = (event) => {
+        setCommentInput(event.target.value);
+        if (commentError) setCommentError('');
+    };
+
+    const handleAddComment = () => {
+        const value = commentInput.trim();
+
+        if (!value) {
+            setCommentError('El comentario es obligatorio.');
+            return;
+        }
+
+        const newComment = {
+            id: Date.now(),
+            text: value
+        };
+
+        const nextComments = [...comments, newComment];
+        setComments(nextComments);
+        persistComments(nextComments);
+        setCommentInput('');
+        setCommentError('');
+    };
+
+    const handleCommentKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleAddComment();
+        }
+    };
+
+    const handleStartEditComment = (comment) => {
+        setEditingCommentId(comment.id);
+        setEditingValue(comment.text);
+        setCommentError('');
+    };
+
+    const handleSaveEditComment = (commentId) => {
+        const value = editingValue.trim();
+
+        if (!value) {
+            setCommentError('El comentario editado no puede estar vacío.');
+            return;
+        }
+
+        const nextComments = comments.map((comment) =>
+            comment.id === commentId ? { ...comment, text: value } : comment
+        );
+
+        setComments(nextComments);
+        persistComments(nextComments);
+        setEditingCommentId(null);
+        setEditingValue('');
+        setCommentError('');
+    };
+
+    const handleCancelEditComment = () => {
+        setEditingCommentId(null);
+        setEditingValue('');
+        setCommentError('');
+    };
+
+    const handleDeleteComment = (commentId) => {
+        const nextComments = comments.filter((comment) => comment.id !== commentId);
+        setComments(nextComments);
+        persistComments(nextComments);
+
+        if (editingCommentId === commentId) {
+            setEditingCommentId(null);
+            setEditingValue('');
+        }
     };
 
     if (!task) return null;
@@ -147,10 +240,34 @@ const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
                             <button type="button">Mostrar detalles</button>
                         </div>
                         <div className="input__comment">
-                            <input type="text" name='comentario' placeholder='Escribe un comentario...' maxLength={50}/>
+                            <input
+                                type="text"
+                                name='comentario'
+                                placeholder='Escribe un comentario...'
+                                maxLength={50}
+                                value={commentInput}
+                                onChange={handleCommentInputChange}
+                                onKeyDown={handleCommentKeyDown}
+                            />
+                            {commentError && <small>{commentError}</small>}
                         </div>
                         <div className="container__comments__user">
-                            <TarjetaComentarios />
+                            {comments.map((comment) => (
+                                <TarjetaComentarios
+                                    key={comment.id}
+                                    comment={comment}
+                                    isEditing={editingCommentId === comment.id}
+                                    editValue={editingCommentId === comment.id ? editingValue : ''}
+                                    onEditChange={(event) => {
+                                        setEditingValue(event.target.value);
+                                        if (commentError) setCommentError('');
+                                    }}
+                                    onStartEdit={handleStartEditComment}
+                                    onCancelEdit={handleCancelEditComment}
+                                    onSaveEdit={handleSaveEditComment}
+                                    onDelete={handleDeleteComment}
+                                />
+                            ))}
                         </div>
                     </div>
                 </main>

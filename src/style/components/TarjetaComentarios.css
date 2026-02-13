@@ -4,7 +4,6 @@
     height: auto;
     display: flex;
     justify-content: start;
-    border: 1px solid black;
 }
 
 .user__comment {
@@ -45,6 +44,18 @@
     font-size: 14px;
     font-weight: 500;
     text-align: start;
+}
+
+.comment input {
+    width: 100%;
+    color: #242528;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 10px;
+    text-align: start;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
 }
 
 .comment_edit {

@@ -38,7 +38,7 @@ const Home = ({ searchQuery = '' }) => {
     };
 
     const handleCreateTask = (newTask) => {
-        setTasks((prevTasks) => [...prevTasks, newTask]);
+        setTasks((prevTasks) => [...prevTasks, { ...newTask, comments: Array.isArray(newTask.comments) ? newTask.comments : [] }]);
         setModalOpen(false);
     };
 
@@ -59,6 +59,18 @@ const Home = ({ searchQuery = '' }) => {
             )
         );
         handleCloseEditTask();
+    };
+
+    const handlePatchTask = (taskId, partialData) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === taskId ? { ...task, ...partialData } : task
+            )
+        );
+
+        setTaskToEdit((prev) =>
+            prev && prev.id === taskId ? { ...prev, ...partialData } : prev
+        );
     };
 
     const handleDeleteTask = (taskId) => {
@@ -90,6 +102,7 @@ const Home = ({ searchQuery = '' }) => {
                     onClose={handleCloseEditTask}
                     onSave={handleSaveTask}
                     onDelete={handleDeleteTask}
+                    onTaskPatch={handlePatchTask}
                 />
             )}
         </div>

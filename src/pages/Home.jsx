@@ -7,7 +7,7 @@ import EditarFormulario from '../components/EditarFormulario';
 
 const STORAGE_KEY = 'taskflow_tasks';
 
-const Home = () => {
+const Home = ({ searchQuery = '' }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [tasks, setTasks] = useState(() => {
         try {
@@ -18,7 +18,13 @@ const Home = () => {
         }
     });
 
-    /* Arrastrar tarea */
+    const [editModalOpen, setEditModalOpen] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState(null);
+
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    }, [tasks]);
+
     const handleMoveTask = (taskId, newStatus) => {
         setTasks((prevTasks) =>
             prevTasks.map((task) =>
@@ -30,13 +36,6 @@ const Home = () => {
             prev && prev.id === taskId ? { ...prev, status: newStatus } : prev
         );
     };
-
-    const [editModalOpen, setEditModalOpen] = useState(false);
-    const [taskToEdit, setTaskToEdit] = useState(null);
-
-    useEffect(() => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-    }, [tasks]);
 
     const handleCreateTask = (newTask) => {
         setTasks((prevTasks) => [...prevTasks, newTask]);
@@ -70,6 +69,7 @@ const Home = () => {
                 tasks={tasks}
                 onEditTask={handleOpenEditTask}
                 onMoveTask={handleMoveTask}
+                searchQuery={searchQuery}
             />
             {modalOpen && (
                 <ModalFormularioTarjeta

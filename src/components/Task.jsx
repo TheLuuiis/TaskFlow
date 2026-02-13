@@ -6,14 +6,14 @@ const statusLabel = {
     done: 'Finalizado'
 };
 
-const Task = ({ task, onEditTask, onDragStart, onDragEnd, isDragging }) => {
+const Task = ({ task, onEditTask, onDragStart, onDragEnd, isDragging, isFilteredOut }) => {
     const { title, status } = task;
 
     return (
         <div
-            className={`card__task ${isDragging ? 'is-dragging' : ''}`}
-            draggable
-            onDragStart={(event) => onDragStart(event, task.id)}
+            className={`card__task ${isDragging ? 'is-dragging' : ''} ${isFilteredOut ? 'filtered-out' : ''}`}
+            draggable={!isFilteredOut}
+            onDragStart={(event) => onDragStart && onDragStart(event, task.id)}
             onDragEnd={onDragEnd}
         >
             <div className="title__card">

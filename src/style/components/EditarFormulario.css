@@ -52,6 +52,12 @@
     align-items: center;
 }
 
+.options__form_modal__edit button {
+    width: 19px;
+    height: 19px;
+    border: none;
+}
+
 .options__form_modal__edit svg {
     cursor: pointer;
     transition: .3s ease-in-out;

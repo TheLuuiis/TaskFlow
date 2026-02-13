@@ -6,28 +6,61 @@ import ModalFormularioTarjeta from '../components/ModalFormularioTarjeta';
 import EditarFormulario from '../components/EditarFormulario';
 
 const Home = () => {
-
     const [modalOpen, setModalOpen] = useState(false);
-    const [tasks, setTask] = useState([]);
+    const [tasks, setTasks] = useState([]);
+    const [editModalOpen, setEditModalOpen] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState(null);
 
-    const handleCreateTask = (newTaks) => {
-        setTask((prevTaks) => [...prevTaks, newTaks]);
+    const handleCreateTask = (newTask) => {
+        setTasks((prevTasks) => [...prevTasks, newTask]);
         setModalOpen(false);
-    }
+    };
 
-    return (  
+    const handleOpenEditTask = (task) => {
+        setTaskToEdit(task);
+        setEditModalOpen(true);
+    };
+
+    const handleCloseEditTask = () => {
+        setEditModalOpen(false);
+        setTaskToEdit(null);
+    };
+
+    const handleSaveTask = (updatedTask) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === updatedTask.id ? updatedTask : task
+            )
+        );
+        handleCloseEditTask();
+    };
+
+    return (
         <div className="container__home">
             <BandejaDeEntrada />
-            <ContainerTask onOpenModal={() => setModalOpen(true)} tasks={tasks} />
+
+            <ContainerTask
+                onOpenModal={() => setModalOpen(true)}
+                tasks={tasks}
+                onEditTask={handleOpenEditTask}
+            />
+
             {modalOpen && (
                 <ModalFormularioTarjeta
                     onClose={() => setModalOpen(false)}
                     onCreateTask={handleCreateTask}
                 />
             )}
-            <EditarFormulario />
+
+            {editModalOpen && taskToEdit && (
+                <EditarFormulario
+                    task={taskToEdit}
+                    onClose={handleCloseEditTask}
+                    onSave={handleSaveTask}
+                />
+            )}
         </div>
     );
-}
- 
+};
+
 export default Home;

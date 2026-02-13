@@ -1,7 +1,7 @@
 import '../style/components/BandejaDeEntrada.css';
 import chorme from '../assets/image/chorme.svg';
 
-const BandejaDeEntrada = () => {
+const BandejaDeEntrada = ({ onOpenModal }) => {
     return (  
         <div className="container__bandeja">
             <div className="title__bandeja">
@@ -9,7 +9,7 @@ const BandejaDeEntrada = () => {
                 <h2>Bandeja de entrada</h2>
             </div>
             <div className="card__bandeja">
-                <button>Añade una tarjeta</button>
+                <button type='button' onClick={onOpenModal}>Añade una tarjeta</button>
             </div>
             <div className="container__tareas">
                 <div className="title__tareas">

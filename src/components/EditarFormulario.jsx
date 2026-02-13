@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import '../style/components/EditarFormulario.css';
+import TarjetaComentarios from './TarjetaComentarios';
 
 const estadosValidos = ['pending', 'progress', 'done'];
 
-const EditarFormulario = ({ task, onClose, onSave }) => {
+const EditarFormulario = ({ task, onClose, onSave, onDelete }) => {
     const [formData, setFormData] = useState({
         id: '',
         title: '',
@@ -67,6 +68,11 @@ const EditarFormulario = ({ task, onClose, onSave }) => {
         });
     };
 
+    const handleDelete = () => {
+        if (typeof onDelete !== 'function' || !formData.id) return;
+        onDelete(formData.id);
+    };
+
     if (!task) return null;
 
     return (
@@ -106,7 +112,7 @@ const EditarFormulario = ({ task, onClose, onSave }) => {
                                 </div>
                             </div>
 
-                            <div className="container__description-edit">
+                            <div className="container__description__edit">
                                 <div className="description__edit">
                                     <div className="title__description">
                                         <svg width="18" height="18" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM4 9C3.44772 9 3 9.44772 3 10C3 10.5523 3.44772 11 4 11H20C20.5523 11 21 10.5523 21 10C21 9.44772 20.5523 9 20 9H4ZM3 14C3 13.4477 3.44772 13 4 13H20C20.5523 13 21 13.4477 21 14C21 14.5523 20.5523 15 20 15H4C3.44772 15 3 14.5523 3 14ZM4 17C3.44772 17 3 17.4477 3 18C3 18.5523 3.44772 19 4 19H14C14.5523 19 15 18.5523 15 18C15 17.4477 14.5523 17 14 17H4Z" fill="#A9ABAF"></path></svg>
@@ -123,9 +129,11 @@ const EditarFormulario = ({ task, onClose, onSave }) => {
                                         {errors.description && <small>{errors.description}</small>}
                                     </div>
                                 </div>
-
                                 {errors.status && <small>{errors.status}</small>}
-                                <button type="submit">Guardar</button>
+                                <div className="container__btn__edit">
+                                    <button type="submit">Guardar</button>
+                                    <button type="button" className="btn__delete" onClick={handleDelete}>Eliminar tarea</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -133,14 +141,17 @@ const EditarFormulario = ({ task, onClose, onSave }) => {
                     <div className="container__comments">
                         <div className="container__title__comments">
                             <div className="title__comment">
+                                <svg width="17" height="17" fill="#242528" viewBox="0 0 16 16" role="presentation" className="_1reo15vq _18m915vq _syaz1r31 _lcxvglyw _s7n4yfq0 _vc881r31 _1bsbpxbi _4t3ipxbi"><path fill="currentcolor" d="M0 3.125A2.625 2.625 0 0 1 2.625.5h10.75A2.625 2.625 0 0 1 16 3.125v8.25A2.625 2.625 0 0 1 13.375 14H4.449l-3.327 1.901A.75.75 0 0 1 0 15.25zM2.625 2C2.004 2 1.5 2.504 1.5 3.125v10.833L4.05 12.5h9.325c.621 0 1.125-.504 1.125-1.125v-8.25C14.5 2.504 13.996 2 13.375 2zM12 6.5H4V5h8zm-3 3H4V8h5z"></path></svg>
                                 <p>Comentarios y Actividad</p>
                             </div>
                             <button type="button">Mostrar detalles</button>
                         </div>
                         <div className="input__comment">
-                            <input type="text" name='comentario' placeholder='Escribe un comentario...' />
+                            <input type="text" name='comentario' placeholder='Escribe un comentario...' maxLength={50}/>
                         </div>
-                        <div className="container__comments__user"></div>
+                        <div className="container__comments__user">
+                            <TarjetaComentarios />
+                        </div>
                     </div>
                 </main>
             </div>

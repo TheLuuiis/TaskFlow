@@ -61,9 +61,16 @@ const Home = ({ searchQuery = '' }) => {
         handleCloseEditTask();
     };
 
+    const handleDeleteTask = (taskId) => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+        handleCloseEditTask();
+    };
+
     return (
         <div className="container__home">
-            <BandejaDeEntrada />
+            <BandejaDeEntrada
+                onOpenModal={() => setModalOpen(true)}
+            />
             <ContainerTask
                 onOpenModal={() => setModalOpen(true)}
                 tasks={tasks}
@@ -82,6 +89,7 @@ const Home = ({ searchQuery = '' }) => {
                     task={taskToEdit}
                     onClose={handleCloseEditTask}
                     onSave={handleSaveTask}
+                    onDelete={handleDeleteTask}
                 />
             )}
         </div>

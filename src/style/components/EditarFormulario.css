@@ -162,7 +162,7 @@
     font-weight: 400;
 }
 
-.container__description-edit {
+.container__description__edit {
     width: 100%;
     height: auto;
     padding: 25px 0px 16px 20px;
@@ -253,8 +253,17 @@
     0 0 12px rgba(8, 102, 255, 0.35);
 }
 
-.container__description-edit button {
+.container__btn__edit {
     width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container__btn__edit button {
+    width: 100%;
+    max-width: 40%;
     color: var(--text__White);
     font-size: 16px;
     font-weight: 600;
@@ -268,10 +277,32 @@
     transition: .3s ease-in-out;
 }
 
-.container__description-edit button:hover {
+.container__btn__edit .btn__delete {
+    width: 100%;
+    max-width: 40%;
+    color: var(--text__White);
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    white-space: middle;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    background-color: #EF233C;
+    transition: .3s ease-in-out;
+}
+
+.container__btn__edit button[type="submit"]:hover {
     color: #0866FF;
     background-color: transparent;
     border: 1px solid #0866FF;
+}
+
+.container__btn__edit .btn__delete:hover {
+    color: #EF233C;
+    background-color: transparent;
+    border: 1px solid #EF233C;
 }
 
 .container__comments {

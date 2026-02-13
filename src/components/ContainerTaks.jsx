@@ -2,7 +2,12 @@ import '../style/components/ContainerTask.css';
 import AñadirTarjeta from './AñadirTarjeta';
 import Task from './Task';
 
-const ContainerTask = () => {
+const ContainerTask = ({ onOpenModal, tasks }) => {
+
+    const tareasPendientes = tasks.filter((task) => task.status === 'pending');
+    const tareasEnProceso = tasks.filter((task) => task.status === 'progress');
+    const tareasFinalizadas = tasks.filter((task) => task.status === 'done');
+
     return (  
         <div className="container__taks">
             <header className='header__taks'>
@@ -20,15 +25,39 @@ const ContainerTask = () => {
             </header>
             <div className="taks">
                 <ul>
-                    <li>
-                        <Task />
+                    <li className='pendiente'>
+                        {tareasPendientes.map((task) => (
+                            <Task
+                                key={task.id}
+                                title={task.title}
+                                description={task.description}
+                                status={task.status}
+                            />
+                        ))}
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li className='enProceso'>
+                        {tareasEnProceso.map((task) => (
+                            <Task
+                                key={task.id}
+                                title={task.title}
+                                description={task.description}
+                                status={task.status}
+                            />
+                        ))}
+                    </li>
+                    <li className='finalizado'>
+                        {tareasFinalizadas.map((task) => (
+                            <Task
+                                key={task.id}
+                                title={task.title}
+                                description={task.description}
+                                status={task.status}
+                            />
+                        ))}
+                    </li>
                 </ul>
             </div>
-            <AñadirTarjeta />
+            <AñadirTarjeta onOpenModal={onOpenModal} />
         </div>
     );
 }

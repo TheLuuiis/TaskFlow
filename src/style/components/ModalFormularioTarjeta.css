@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);  
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -46,6 +46,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.options__form_modal button {
+    width: 19px;
+    height: 19px;
+    border: none;
 }
 
 .options__form_modal svg {

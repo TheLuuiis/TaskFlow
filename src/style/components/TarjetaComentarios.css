@@ -100,3 +100,17 @@
 .btn__comment__red {
     color: #EF233C;
 }
+
+.card__comments {
+  align-items: flex-start;
+  padding: 10px;
+}
+
+@media (max-width: 576px) {
+  .card__comments { gap: 8px; }
+  .user__comment { width: 28px; height: 28px; }
+  .description__user span,
+  .comment p,
+  .comment input { font-size: 13px; }
+  .comment_edit { gap: 12px; flex-wrap: wrap; }
+}

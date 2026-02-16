@@ -261,3 +261,28 @@
     color: #CECFD2;
     fill: #CECFD2;
 }
+
+@media (max-width: 768px) {
+  .card__task {
+    min-height: 145px;
+    max-height: 210px;
+    padding: 12px 8px;
+  }
+  .title__card { padding: 0 6px; }
+  .container__task__card { padding: 9px 8px; }
+  .container__edit__card { padding: 0 6px; }
+}
+
+@media (max-width: 576px) {
+  .title__card span,
+  .content__task__card a,
+  .description__task__card p,
+  .edit__card p {
+    font-size: 13px;
+  }
+  .edit__card svg,
+  .container__edit__card > svg {
+    width: 15px;
+    height: 15px;
+  }
+}

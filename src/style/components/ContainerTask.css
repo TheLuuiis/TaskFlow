@@ -92,3 +92,38 @@
     background: rgba(255, 255, 255, 0.12);
     transform: scale(1.01);
 }
+
+.taks ul {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.taks ul li {
+  flex: 0 0 272px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 992px) {
+  .container__taks { border-radius: 14px; }
+  .header__taks { padding: 12px; }
+  .view__taks h1 { font-size: 16px; }
+  .acount__taks { gap: 8px; }
+}
+
+@media (max-width: 768px) {
+  .header__taks { flex-wrap: wrap; gap: 10px; }
+  .acount__taks { display: none; }
+  .taks { padding: 10px 6px 0; }
+  .taks ul { gap: 8px; }
+  .taks ul li { flex-basis: min(86vw, 290px); }
+}
+
+@media (max-width: 576px) {
+  .container__taks { border-radius: 10px; }
+  .view__taks h1 { font-size: 14px; }
+  .view__taks svg { width: 20px; height: 20px; }
+  .taks ul li { flex-basis: 88vw; }
+}

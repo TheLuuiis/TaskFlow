@@ -449,3 +449,58 @@
     overflow-x: hidden;
     padding: 15px 0px;
 }
+
+@media (max-width: 1200px) {
+  .container__modal__form__edit {
+    width: calc(100% - 40px);
+    max-width: 1080px;
+    height: min(500px, calc(100vh - 40px));
+    top: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container__modal__edit { padding: 12px; align-items: center; }
+  .container__modal__form__edit {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 24px);
+    border-radius: 14px;
+    overflow-y: auto;
+  }
+  .container__modal__form__edit header { padding: 12px 16px; }
+  .main__edit { flex-direction: column; }
+  .container__info__edit,
+  .container__comments {
+    max-width: 100%;
+    flex-basis: auto;
+    width: 100%;
+    padding: 16px;
+  }
+  .container__comments { min-height: 260px; max-height: 42vh; }
+}
+
+@media (max-width: 576px) {
+  .container__modal__form__edit header {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .container__modal__form__edit header select {
+    width: 100%;
+    padding: 8px 12px;
+  }
+  .title__description p,
+  .title__comment p { font-size: 13px; }
+  .edit__input input,
+  .content__edit textarea,
+  .input__comment input { font-size: 14px; }
+  .container__btn__edit { gap: 10px; flex-direction: column; }
+  .container__btn__edit button,
+  .container__btn__edit .btn__delete { max-width: 100%; }
+  .container__title__comments button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}

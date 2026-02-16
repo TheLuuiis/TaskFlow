@@ -1,21 +1,21 @@
 import '../style/components/TarjetaComentarios.css';
 
-const TarjetaComentarios = ({
-    comment,
-    isEditing,
-    editValue,
-    onEditChange,
-    onStartEdit,
-    onCancelEdit,
-    onSaveEdit,
-    onDelete
-}) => {
-    const handleEditKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            onSaveEdit(comment.id);
-        }
-    };
+    const TarjetaComentarios = ({
+        comment,
+        isEditing,
+        editValue,
+        onEditChange,
+        onStartEdit,
+        onCancelEdit,
+        onSaveEdit,
+        onDelete
+    }) => {
+        const handleEditKeyDown = (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                onSaveEdit(comment.id);
+            }
+        };
 
     return (  
         <div className="card__comments">

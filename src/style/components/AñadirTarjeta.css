@@ -37,3 +37,35 @@
 .container__añadir__tarjeta button:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+.container__añadir__tarjeta {
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+@media (max-width: 992px) {
+  .container__añadir__tarjeta {
+    width: calc(100% - 20px);
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px;
+  }
+  .container__añadir__tarjeta button {
+    flex: 1 1 0;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container__añadir__tarjeta button {
+    font-size: 12px;
+    font-weight: 500;
+    gap: 6px;
+  }
+  .container__añadir__tarjeta button svg {
+    width: 13px;
+    height: 13px;
+  }
+}

@@ -152,3 +152,42 @@
     font-weight: 400;
     text-align: center;
 }
+
+@media (max-width: 1200px) {
+  .container__bandeja { width: 248px; }
+  .title__bandeja { width: 100%; margin-bottom: 18px; }
+  .title__bandeja h2 { font-size: 20px; }
+}
+
+@media (max-width: 992px) {
+  .container__bandeja { width: 100%; height: auto; padding: 14px; }
+  .container__tareas { gap: 16px; }
+  .title__tareas h2 { font-size: 18px; }
+  .options__tareas {
+    width: 240px;
+    height: 190px;
+    margin: 0 auto;
+    bottom: 0;
+  }
+  .me__bandeja { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .container__bandeja {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .container__bandeja { border-radius: 12px; }
+  .title__bandeja { justify-content: flex-start; }
+  .title__bandeja h2 { font-size: 18px; }
+  .title__tareas p { font-size: 12px; }
+  .me__bandeja p { text-align: left; line-height: 1.35; }
+}
+
+@media (max-width: 400px) {
+  .container__bandeja {
+    display: none;
+  }
+}

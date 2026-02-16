@@ -338,3 +338,48 @@
     text-align: start;
     margin: 0px 0px 15px;
 }
+
+@media (max-width: 1200px) {
+  .container__modal__form {
+    width: calc(100% - 40px);
+    max-width: 1080px;
+    height: min(700px, calc(100vh - 40px));
+  }
+  .title__form h1,
+  .description__form h2 { font-size: 28px; }
+}
+
+@media (max-width: 992px) {
+  .container__modal__tarjeta { padding: 12px; }
+  .container__modal__form {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+    height: auto;
+    overflow-y: auto;
+    border-radius: 14px;
+  }
+  .container__modal__form header { padding: 12px 16px; }
+  .info__modal__form { flex-direction: column; }
+  .container__form,
+  .container__description__form {
+    max-width: 100%;
+    padding: 16px;
+  }
+  .container__description__form img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+  .states { gap: 10px; flex-wrap: wrap; }
+}
+
+@media (max-width: 576px) {
+  .title__form h1,
+  .description__form h2 { font-size: 23px; }
+  .title__form p,
+  .description__form p { font-size: 14px; }
+  .inputs input,
+  .inputs textarea { font-size: 14px; padding: 10px 12px; }
+  .states a { font-size: 14px; }
+  .states select { width: 100%; }
+}
